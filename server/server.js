@@ -23,25 +23,36 @@ app.post('/chat', async (req, res) => {
   }
 
   try {
-    const response = await axios.post(
-      `${OPENAI_BASE_URL}/chat/completions`,
-      {
-        model: 'gpt-4', // or another model if you prefer
-        messages: [
-            {
-                role: 'system',
-                content: 'You are a helpful assistant. you can answer questions and provide information based on the user\'s input.'
-            },
-            { role: 'user', content: userMessage }
-        ]
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${OPENAI_API_KEY}`,
-          'Content-Type': 'application/json'
+    console.log('Received message:', OPENAI_API_KEY);
+    let data = JSON.stringify({
+      "model": "gpt-4",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant that processes text based on user instructions."
+        },
+        {
+          "role": "user",
+          "content": userMessage + "\nInstruction:\ always respond in a concise manner, no more than 100 words."
         }
-      }
-    );
+      ],
+      "temperature": 0.7
+    });
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'https://api.chatanywhere.org/v1/chat/completions',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer sk-FuoJ5sVtxyYL5XrfbkqEKwAlDDVFWSN9tNCRBDDl42EpqaqH'
+      },
+      data: data
+    };
+
+    const response = await axios(config);
+
+
 
     const answer = response.data.choices?.[0]?.message?.content || 'No response from OpenAI.';
     res.json({ answer });
