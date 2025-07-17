@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 
 // Chat endpoint
 app.post('/chat', async (req, res) => {
+  console.log("/chat endpoint hit");
   const userMessage = req.body.messages;
   if (!userMessage) {
     return res.status(400).json({ error: 'Message is required in the request body.' });
@@ -25,7 +26,7 @@ app.post('/chat', async (req, res) => {
   try {
     console.log('Received message:', OPENAI_API_KEY);
     let data = JSON.stringify({
-      "model": "gpt-4",
+      "model": "gpt-3.5-turbo",
       "messages": [
         {
           "role": "system",
