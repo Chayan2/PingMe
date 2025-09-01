@@ -1,0 +1,136 @@
+/* General app styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+}
+
+/* Main chat container */
+.chat-container {
+  max-width: 800px;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat Header */
+.chat-header {
+  background-color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  color: #333;
+  font-size: 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Chat history area with proper spacing */
+.chat-history {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat message bubbles */
+.message {
+  padding: 12px 18px;
+  margin: 8px 0;
+  border-radius: 20px;
+  max-width: 75%;
+  word-wrap: break-word;
+  line-height: 1.4;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* User's message bubble */
+.message.user {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* Assistant's message bubble */
+.message.assistant {
+  background-color: #e9ecef;
+  color: #333;
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+/* --- Corrected Footer Styling --- */
+.input-group {
+  background-color: #fff;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+  display: flex; /* Ensures items are in a row */
+  align-items: center; /* Vertically centers the input and button */
+  gap: 10px; /* Modern way to add space between elements */
+}
+
+.form-control {
+  flex-grow: 1; /* This makes the input box stretch to fill available space */
+  border-radius: 25px; /* Ensures rounded edges */
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+.btn {
+  border-radius: 25px; /* Ensures the button is also rounded */
+  padding: 10px 20px;
+  font-weight: 500;
+  /* `gap` on the parent handles the spacing, so `margin-left` is not needed here */
+}
+
+/* --- Loader styling --- */
+.loader-message {
+  padding: 12px 18px;
+  margin: 8px 0;
+  border-radius: 20px;
+  background-color: #e9ecef;
+  align-self: flex-start;
+  margin-right: auto;
+  display: inline-block;
+}
+
+.loader-dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loader-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loader-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1.0);
+  }
+}
