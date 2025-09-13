@@ -31,6 +31,10 @@ export default function Login() {
             <button onClick={getLoginDetails}>
                 submit
             </button>
+            <a href="http://localhost:5000/api/auth/google">
+                <button>Sign in with Google</button>
+                </a>
+
         </div>
     )
 }
